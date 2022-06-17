@@ -1,7 +1,6 @@
-
 function App() {
   return (
-    <div>Hello!</div>
+    <div>Coming soon!</div>
   );
 }
 
