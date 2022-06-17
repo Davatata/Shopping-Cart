@@ -1,6 +1,13 @@
+import CartItem from "./components/CartItem";
+
 function App() {
   return (
-    <div>Coming soon!</div>
+    <div>
+      <h1>Shopping Cart</h1>
+      <CartItem />
+      <CartItem />
+      <CartItem />
+    </div>
   );
 }
 
