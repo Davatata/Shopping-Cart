@@ -1,11 +1,12 @@
+#lists{
+  max-width: 900px !important;
+  margin: auto;
+}
+
 body {
   font-family: sans-serif;
   margin: 3rem 1.5rem;
   background-color: #dfdfdf;
-}
-
-textarea {
-  resize: none;
 }
 
 .modalPopup {
@@ -35,4 +36,89 @@ textarea {
   position: fixed;
   bottom: 20px;
   right: 20px; 
+}
+
+.listCard {
+  margin-bottom: 15px !important;
+  
+}
+
+.lightSkyBlue {
+  background-color: #87cefa9e;
+}
+
+.lightGreenBg {
+  background-color: #87fa9596;
+}
+
+textarea {
+  font-weight: bold !important;
+  margin-top: 8px;
+  resize: none;
+  font-size: 0.7rem !important;
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+  margin: 15px 0 0px 0 !important;
+  height: 1rem !important;
+  width: 1rem !important;
+}
+
+.cartClose {
+  font-size:0.8rem !important;
+  margin: 12px 0px 0 0px !important;
+}
+
+button {
+  font-size: 0.7rem !important;
+}
+
+button:focus{
+  box-shadow: none !important;
+}
+
+@media (min-width: 576px) {
+  textarea {
+    font-size:0.9rem !important;
+    margin-top: 6px !important;
+  } 
+
+  button {
+    font-size: 0.8rem !important;
+  }
+
+  .cartItem {
+    margin: 0.5rem 0 !important;
+  }
+
+  input[type="checkbox"] {
+    cursor: pointer;
+    margin: 12px 0 0px 0 !important;
+    height: 1.5rem !important;
+    width: 1.5rem !important;
+  }
+}
+
+@media (min-width: 768px) {
+  textarea {
+    font-size:1rem !important;
+    margin-top: 5px !important;
+  }  
+
+  button {
+    font-size: 1rem !important;
+  }
+}
+
+@media (min-width: 992px) {
+  
+}
+
+@media (min-width: 1200px) {
+  
+}
+
+@media (min-width: 1400px) {
+  
 }

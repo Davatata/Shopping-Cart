@@ -1,5 +1,3 @@
-import "./CartItem.css";
-
 import {useState} from 'react';
 
 function CartItem(props) {
@@ -25,14 +23,17 @@ function CartItem(props) {
   }
 
   return (
-    <div className="bg-light container shadow my-3" style={{ height: "3rem" }}>
+    <div className="bg-light container-fluid shadow my-3 cartItem rounded" style={{ height: "3rem" }}>
       <div className="row">
+      <div class="col-1 text-center">
         <input
-          className="col-1 form-check-input mx-2 align-self-center"
+          className="form-check-input mx-2 align-self-center"
+          checked={props.checked}
           type="checkbox"
           onChange={updateCheckValue}
         />
-        <div className="col-8 col-sm-10">
+        </div>
+        <div className="col-9 col-sm-10">
           <textarea
             className="form-control text-uppercase"
             rows="1"
@@ -41,7 +42,7 @@ function CartItem(props) {
           ></textarea>
         </div>
 
-        <div className="col-1">
+        <div className="col-1 text-center">
           <button
             className="btn-close cartClose"
             onClick={deleteHandler}
