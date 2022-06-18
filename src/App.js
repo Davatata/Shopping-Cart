@@ -1,9 +1,9 @@
-import CartItem from "./components/CartItem";
+import CartItem from "./components/CartItem/CartItem";
 
 function App() {
   return (
     <div>
-      <h1>Shopping Cart</h1>
+      <h1>Shopping Cart Name</h1>
       <CartItem />
       <CartItem />
       <CartItem />
