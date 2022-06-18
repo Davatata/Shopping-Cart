@@ -3,7 +3,6 @@ import "./CartItem.css";
 import {useState} from 'react';
 
 function CartItem(props) {
-  const [checked, setChecked] = useState(false);
   const [text, setText] = useState(props.text);
 
   function deleteHandler() {
@@ -12,7 +11,6 @@ function CartItem(props) {
 
   function updateCheckValue(event) {
     console.log("Setting " + props.text + " to " + event.target.checked);
-    setChecked(event.target.checked);
 
     if (event.target.checked === true) {
       props.onChecked(event);
