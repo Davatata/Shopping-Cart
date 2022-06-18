@@ -1,25 +1,54 @@
 import "./CartItem.css";
 
-function CartItem() {
+import {useState} from 'react';
+
+function CartItem(props) {
+  const [checked, setChecked] = useState(false);
+  const [text, setText] = useState(props.text);
+
+  function deleteHandler() {
+    console.log("closing " + props.text);
+  }
+
+  function updateCheckValue(event) {
+    console.log("Setting " + props.text + " to " + event.target.checked);
+    setChecked(event.target.checked);
+
+    if (event.target.checked === true) {
+      props.onChecked(event);
+    }
+    else {
+      props.onUnChecked(event);
+    }
+  }
+
+  function textUpdateHandler(event) {
+    setText(event.target.value);
+  }
+
   return (
     <div className="bg-light container shadow my-3" style={{ height: "3rem" }}>
       <div className="row">
-        <img alt="Drag" className="col-sm-1 col-form-label" />
         <input
-          className="col-sm-1 form-check-input mt-3 mx-2 h3"
+          className="col-1 form-check-input mx-2 align-self-center"
           type="checkbox"
-          value=""
-          id="flexCheckDefault"
+          onChange={updateCheckValue}
         />
-        <div className="col-sm-9">
+        <div className="col-8 col-sm-10">
           <textarea
-            className="form-control mt-1"
-            id="exampleFormControlTextarea1"
+            className="form-control text-uppercase"
             rows="1"
+            onChange={textUpdateHandler}
+            value={text}
           ></textarea>
         </div>
 
-        <button className="col-sm-1 btn-close cartClose"></button>
+        <div className="col-1">
+          <button
+            className="btn-close cartClose"
+            onClick={deleteHandler}
+          ></button>
+        </div>
       </div>
     </div>
   );

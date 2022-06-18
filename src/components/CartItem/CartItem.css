@@ -1,3 +1,14 @@
 .cartClose {
     margin: 12px 0px 0 10px;
 }
+
+input[type="checkbox"] {
+    margin-left: 10px;
+    height: 1.6rem;
+    cursor: pointer;
+}
+
+textarea {
+    font-weight: bold !important;
+    margin-top: 5px;
+}
