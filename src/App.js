@@ -1,11 +1,12 @@
+import {useState} from 'react';
+
 import Backdrop from "./components/Backdrop/Backdrop";
 import Modal from "./components/Modal/Modal";
-
-import {useState} from 'react';
 import CartItemList from "./components/CartItemLIst/CartItemList";
+import packageJson from '../package.json';
+
 
 function App() {
-  
   const unchecked = [
     {
       text: "Apples",
@@ -59,14 +60,26 @@ function App() {
     closeModalHandler();
   }
 
-  function checkCartItem(event) {
-    console.log("checking", event);
-    //iterate unchecked and mark clicked item as checked
+  function checkCartItem(index) {
+    console.log("checking", index);
+    const newUnchecked = [...uncheckedItems];
+    const newChecked= [...checkedItems];
+    let item = newUnchecked.splice(index, 1)[0];
+    item.checked = true;
+    newChecked.push(item);
+    setCheckedItems(newChecked);
+    setUncheckedItems(newUnchecked);
   }
 
-  function uncheckCartItem() {
-    console.log("unchecking");
-    //iterate checked and mark clicked item as unchecked
+  function uncheckCartItem(index) {
+    console.log("checking", index);
+    const newUnchecked = [...uncheckedItems];
+    const newChecked= [...checkedItems];
+    let item = newChecked.splice(index, 1)[0];
+    item.checked = false;
+    newUnchecked.push(item);
+    setCheckedItems(newChecked);
+    setUncheckedItems(newUnchecked);
   }
 
   function addBlankUnchecked() {
@@ -96,36 +109,31 @@ function App() {
   function deleteUnchecked(index) {
     let newArray = [...uncheckedItems];
     newArray.splice(index, 1);
-    console.log(newArray);
     setUncheckedItems(newArray);
   }
 
   function deleteChecked(index) {
     let newArray = [...checkedItems];
     newArray.splice(index, 1);
-    console.log(newArray);
     setCheckedItems(newArray);
   }
 
   function updateUncheckedItems(text, index) {
-    console.log(text, index);
     let newArray = [...uncheckedItems];
     newArray[index].text = text;
-    console.log(newArray);
     setUncheckedItems(newArray);
   }
 
   function updateCheckedItems(text, index) {
-    console.log(text, index);
     let newArray = [...checkedItems];
     newArray[index].text = text;
-    console.log(newArray);
     setCheckedItems(newArray);
   }
 
   return (
     <div>
-      <h1 className="text-center text-bg-dark text-uppercase">Shopping Cart</h1>
+      <span id="version" className=''>v{packageJson.version}</span>
+      <h3 className="text-center text-bg-dark text-uppercase rounded">Shopping Cart</h3>
       <div>
         <div id="lists">
 
@@ -160,7 +168,13 @@ function App() {
       { modalIsOpen && <Backdrop onClick={closeModalHandler}/>}
       
 
-      <button id="fixedbutton" className="btn btn-danger text-uppercase" onClick={clearAllHandler}>Clear All</button>
+        <div className="text-end">
+          {(uncheckedItems.length > 0 || checkedItems.length > 0) &&
+            <button id="fixedbutton" className=" btn btn-danger text-uppercase" onClick={clearAllHandler}>Clear All</button>
+          }
+        </div>
+      
+      
     </div>
   );
 }
