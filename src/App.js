@@ -10,7 +10,8 @@ function App() {
   const unchecked = [
     {
       text: "",
-      checked: false
+      checked: false,
+      autofocus: false
     },
   ];
   const checked = [];
@@ -42,6 +43,7 @@ function App() {
     const newChecked= [...checkedItems];
     let item = newUnchecked.splice(index, 1)[0];
     item.checked = true;
+    item.autofocus = false;
     newChecked.push(item);
     setCheckedItems(newChecked);
     setUncheckedItems(newUnchecked);
@@ -52,6 +54,7 @@ function App() {
     const newChecked= [...checkedItems];
     let item = newChecked.splice(index, 1)[0];
     item.checked = false;
+    item.autofocus = false;
     newUnchecked.push(item);
     setCheckedItems(newChecked);
     setUncheckedItems(newUnchecked);
@@ -62,7 +65,8 @@ function App() {
     newArray.push(
       {
         text: "",
-        checked: false
+        checked: false,
+        autofocus: true
       }
     );
     setUncheckedItems(newArray);
@@ -73,7 +77,8 @@ function App() {
     newArray.push(
       {
         text: "",
-        checked: true
+        checked: true,
+        autofocus: true
       }
     );
     setCheckedItems(newArray);
@@ -103,6 +108,18 @@ function App() {
     setCheckedItems(newArray);
   }
 
+  function uncheckedEnterPress(event) {
+    if (event.key === "Enter") {
+      addBlankUnchecked();
+    }
+  }
+
+  function checkedEnterPress(event) {
+    if (event.key === "Enter") {
+      addBlankChecked();
+    }
+  }
+
   return (
     <div>
       <span id="version" className=''>v{packageJson.version}</span>
@@ -119,6 +136,7 @@ function App() {
               uncheckCartItem = {uncheckCartItem}
               deleteItem = {deleteUnchecked}
               addBlankItem = {addBlankUnchecked}
+              onKeyUp = {uncheckedEnterPress}
               onChange= {updateUncheckedItems}/>
           </div>
 
@@ -130,6 +148,7 @@ function App() {
               uncheckCartItem = {uncheckCartItem}
               deleteItem = {deleteChecked}
               addBlankItem = {addBlankChecked}
+              onKeyUp={checkedEnterPress}
               onChange= {updateCheckedItems}/>
           </div>       
 

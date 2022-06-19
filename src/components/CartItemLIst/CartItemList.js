@@ -10,7 +10,9 @@ function CartItemList(props) {
               onUnChecked={props.uncheckCartItem}
               onDelete={props.deleteItem}
               onChange={props.onChange}
-              index={index}/>;
+              onKeyUp={props.onKeyUp}
+              index={index}
+              autofocus={item.autofocus}/>;
           })}
 
           <div className="container-fluid">
