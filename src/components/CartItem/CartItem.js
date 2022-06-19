@@ -1,10 +1,8 @@
-import {useState} from 'react';
-
 function CartItem(props) {
-  const [text, setText] = useState(props.text);
 
   function deleteHandler() {
-    console.log("closing " + props.text);
+    console.log("closing " + props.text + " " + props.index);
+    props.onDelete(props.index);
   }
 
   function updateCheckValue(event) {
@@ -19,26 +17,26 @@ function CartItem(props) {
   }
 
   function textUpdateHandler(event) {
-    setText(event.target.value);
+    props.onChange(event.target.value, props.index);
   }
 
   return (
-    <div className="bg-light container-fluid shadow my-3 cartItem rounded" style={{ height: "3rem" }}>
+    <div className="bg-light container-fluid shadow cartItem rounded" style={{ height: "3rem" }}>
       <div className="row">
-      <div class="col-1 text-center">
-        <input
-          className="form-check-input mx-2 align-self-center"
-          checked={props.checked}
-          type="checkbox"
-          onChange={updateCheckValue}
-        />
+        <div className="col-1 text-center">
+          <input
+            className="form-check-input mx-2 align-self-center"
+            checked={props.checked}
+            type="checkbox"
+            onChange={updateCheckValue}
+          />
         </div>
         <div className="col-9 col-sm-10">
           <textarea
             className="form-control text-uppercase"
             rows="1"
             onChange={textUpdateHandler}
-            value={text}
+            value={props.text}
           ></textarea>
         </div>
 

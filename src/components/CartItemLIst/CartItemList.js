@@ -8,11 +8,13 @@ function CartItemList(props) {
             return <CartItem key={index} checked={item.checked} text={item.text} 
               onChecked={props.checkCartItem} 
               onUnChecked={props.uncheckCartItem}
-              onDelete={props.deleteItem(index)}/>;
+              onDelete={props.deleteItem}
+              onChange={props.onChange}
+              index={index}/>;
           })}
 
           <div className="container-fluid mb-5">
-            <button className="float-end btn btn-success" onClick={props.addBlankItem}>Add +</button>
+            <button className="float-end btn btn-success text-uppercase" onClick={props.addBlankItem}>Add +</button>
           </div>
     </div>
   );

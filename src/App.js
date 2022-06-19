@@ -5,6 +5,7 @@ import {useState} from 'react';
 import CartItemList from "./components/CartItemLIst/CartItemList";
 
 function App() {
+  
   const unchecked = [
     {
       text: "Apples",
@@ -92,12 +93,34 @@ function App() {
     console.log("Adding blank item");
   }
 
-  function deleteUnchecked(e) {
-    console.log(e);
+  function deleteUnchecked(index) {
+    let newArray = [...uncheckedItems];
+    newArray.splice(index, 1);
+    console.log(newArray);
+    setUncheckedItems(newArray);
   }
 
-  function deleteChecked(params) {
-    console.log("Delete");
+  function deleteChecked(index) {
+    let newArray = [...checkedItems];
+    newArray.splice(index, 1);
+    console.log(newArray);
+    setCheckedItems(newArray);
+  }
+
+  function updateUncheckedItems(text, index) {
+    console.log(text, index);
+    let newArray = [...uncheckedItems];
+    newArray[index].text = text;
+    console.log(newArray);
+    setUncheckedItems(newArray);
+  }
+
+  function updateCheckedItems(text, index) {
+    console.log(text, index);
+    let newArray = [...checkedItems];
+    newArray[index].text = text;
+    console.log(newArray);
+    setCheckedItems(newArray);
   }
 
   return (
@@ -113,7 +136,8 @@ function App() {
               checkCartItem = {checkCartItem}
               uncheckCartItem = {uncheckCartItem}
               deleteItem = {deleteUnchecked}
-              addBlankItem = {addBlankUnchecked}/>
+              addBlankItem = {addBlankUnchecked}
+              onChange= {updateUncheckedItems}/>
           </div>
 
           <div className="card card-body listCard lightGreenBg">
@@ -123,7 +147,8 @@ function App() {
               checkCartItem = {checkCartItem}
               uncheckCartItem = {uncheckCartItem}
               deleteItem = {deleteChecked}
-              addBlankItem = {addBlankChecked}/>
+              addBlankItem = {addBlankChecked}
+              onChange= {updateCheckedItems}/>
           </div>
        
 
@@ -135,7 +160,7 @@ function App() {
       { modalIsOpen && <Backdrop onClick={closeModalHandler}/>}
       
 
-      <button id="fixedbutton" className="btn btn-danger" onClick={clearAllHandler}>Clear All</button>
+      <button id="fixedbutton" className="btn btn-danger text-uppercase" onClick={clearAllHandler}>Clear All</button>
     </div>
   );
 }

@@ -66,8 +66,8 @@ input[type="checkbox"] {
 }
 
 .cartClose {
-  font-size:0.8rem !important;
-  margin: 12px 0px 0 0px !important;
+  font-size:0.7rem !important;
+  margin: 16px 0px 0 0px !important;
 }
 
 button {
@@ -76,6 +76,10 @@ button {
 
 button:focus{
   box-shadow: none !important;
+}
+
+.cartItem {
+  margin: 0.5rem 0 !important;
 }
 
 @media (min-width: 576px) {
@@ -89,7 +93,12 @@ button:focus{
   }
 
   .cartItem {
-    margin: 0.5rem 0 !important;
+    margin: 0.7rem 0 !important;
+  }
+
+  .cartClose {
+    font-size: 0.9rem !important;
+    margin: 13px 0px 0 0px !important;
   }
 
   input[type="checkbox"] {
