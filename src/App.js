@@ -1,4 +1,4 @@
-import {useState, useRef} from 'react';
+import {useState} from 'react';
 
 import Backdrop from "./components/Backdrop/Backdrop";
 import Modal from "./components/Modal/Modal";
@@ -14,7 +14,6 @@ function App() {
     },
   ];
   const checked = [];
-  const newInput = useRef(null)
 
   // modalIsOpen => gets the default value of false
   // setModalIsOpen => is called to assign a new value to modalIsOpen
