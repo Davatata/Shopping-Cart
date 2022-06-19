@@ -1,13 +1,10 @@
 function CartItem(props) {
 
   function deleteHandler() {
-    console.log("closing " + props.text + " " + props.index);
     props.onDelete(props.index);
   }
 
   function updateCheckValue(event) {
-    console.log("Setting " + props.text + " to " + event.target.checked);
-
     if (event.target.checked === true) {
       props.onChecked(props.index);
     }
@@ -39,6 +36,7 @@ function CartItem(props) {
               type="text"
               onChange={textUpdateHandler}
               value={props.text}
+              autoFocus
             />
           <button
             type="button"
