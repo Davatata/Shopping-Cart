@@ -32,12 +32,6 @@ body {
   left: 0;
 }
 
-#fixedbutton {
-  /* position: fixed; */
-  /* bottom: 20px; */
-  /* right: 20px;  */
-}
-
 .cartItemCheckbox {
   font-size: 1rem !important;
 }
