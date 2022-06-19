@@ -1,4 +1,4 @@
-import {useState} from 'react';
+import {useState, useEffect} from 'react';
 
 import Backdrop from "./components/Backdrop/Backdrop";
 import Modal from "./components/Modal/Modal";
@@ -7,22 +7,21 @@ import packageJson from '../package.json';
 
 
 function App() {
-  const unchecked = [
-    {
-      text: "",
-      checked: false,
-      autofocus: false
-    },
-  ];
-  const checked = [];
-
   // modalIsOpen => gets the default value of false
   // setModalIsOpen => is called to assign a new value to modalIsOpen
   const [ modalIsOpen, setModalIsOpen ] = useState(false);
 
   // updating these arrays will update the UI
-  const [ checkedItems, setCheckedItems ] = useState(checked);
-  const [ uncheckedItems, setUncheckedItems ] = useState(unchecked);
+  const [ checkedItems, setCheckedItems ] = useState(() => {
+    const json = localStorage.getItem("checkedItems");
+    const savedItems = JSON.parse(json);
+    return savedItems || [];
+  });
+  const [ uncheckedItems, setUncheckedItems ] = useState(() => {
+    const json = localStorage.getItem("uncheckedItems");
+    const savedItems = JSON.parse(json);
+    return savedItems || [];
+  });
 
   function clearAllHandler() {
     setModalIsOpen(true);
@@ -119,6 +118,17 @@ function App() {
       addBlankChecked();
     }
   }
+
+  useEffect(() => {
+    const json = JSON.stringify(checkedItems);
+    localStorage.setItem("checkedItems", json);
+  }, [checkedItems]);
+
+  useEffect(() => {
+    const json = JSON.stringify(uncheckedItems);
+    localStorage.setItem("uncheckedItems", json);
+  }, [uncheckedItems]);
+
 
   return (
     <div>
