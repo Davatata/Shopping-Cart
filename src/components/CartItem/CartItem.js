@@ -17,6 +17,10 @@ function CartItem(props) {
     props.onChange(event.target.value, props.index);
   }
 
+  function keyUpHandler(event) {
+    props.onKeyUp(event);
+  }
+
   return (
     <div className="shadow cartItem rounded">
 
@@ -35,8 +39,9 @@ function CartItem(props) {
               aria-label="Cart item name"
               type="text"
               onChange={textUpdateHandler}
+              onKeyUp={keyUpHandler}
               value={props.text}
-              autoFocus
+              autoFocus={props.autofocus}
             />
           <button
             type="button"
